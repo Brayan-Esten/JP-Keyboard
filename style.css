@@ -1,0 +1,102 @@
+@font-face {
+    font-family: "Tungsten Bold";
+    src: url("//db.onlinewebfonts.com/t/561f38b1f4570de0fb8a39d691ab058c.woff") format("woff");
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style-type: none;
+}
+
+:root{
+    --dark : #001b35;
+    --red: #ff4655;
+    --black: #0f1923;
+    --white: #ece8e1;
+
+}
+
+body{
+    background-color: var(--dark);
+}
+
+header{
+    width: 100%;
+    font-family: Tungsten Bold;
+    font-size: 2rem;
+    background-color: var(--black);
+    color: white;
+    display: grid;
+    place-content: center;
+    border-bottom: .5px solid white;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+}
+
+.heading-wrapper{
+    width: 90%;
+    height: 350px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+        'kb mod swi'
+        'kb mod cap';
+    gap: .9rem;
+    border: 5px solid white;
+}
+
+.kb{
+    grid-area: kb;
+    background-color: yellow;
+}
+
+.mod{
+    grid-area: mod;
+    background-color: blue;
+}
+
+.swi{
+    grid-area: swi;
+    background-color: green;
+}
+
+.cap{
+    grid-area: cap;
+    background-color: pink;
+}
+
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    display: grid;
+    place-content: center;
+    opacity: 0;
+    transition: .6s;
+}
+
+.overlay h1{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.heading-wrapper > div{
+    position: relative;
+    cursor: pointer;
+}
+
+.heading-wrapper > div:hover .overlay{
+    opacity: 1;
+}
