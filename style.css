@@ -31,72 +31,342 @@ body{
 
 header{
     width: 100%;
-    font-family: Tungsten Bold;
-    font-size: 2rem;
     background-color: var(--black);
-    color: white;
     display: grid;
     place-content: center;
     border-bottom: .5px solid white;
-    position: sticky;
-    top: 0;
-    z-index: 9;
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+}
+
+header h1{
+    color: white;
+    font-family: Tungsten Bold;
+    font-size: 4rem;
 }
 
 .heading-wrapper{
-    width: 90%;
-    height: 350px;
-    margin: 2rem auto;
+    width: 75%;
+    height: 380px;
+    margin: 3rem auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 2fr 1fr;
     grid-template-areas: 
-        'kb mod swi'
-        'kb mod cap';
+        'kb swi'
+        'kb cap';
     gap: .9rem;
-    border: 5px solid white;
+}
+
+.heading-wrapper > div {
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.heading-wrapper .img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: .6s;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .kb{
     grid-area: kb;
-    background-color: yellow;
 }
 
-.mod{
-    grid-area: mod;
-    background-color: blue;
+.kb .img{
+    background-image: url(assets/img/kb.jpg);
+    background-position: center;
 }
 
 .swi{
     grid-area: swi;
-    background-color: green;
+}
+
+.swi .img{
+    background-image: url(assets/img/swi.jpg);
+    background-position: bottom;
 }
 
 .cap{
     grid-area: cap;
-    background-color: pink;
+}
+
+.cap .img{
+    background-image: url(assets/img/cap.jpg);
+    background-position: top;
 }
 
 .overlay{
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,.5);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     display: grid;
     place-content: center;
-    opacity: 0;
     transition: .6s;
 }
 
 .overlay h1{
     color: white;
-    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: Tungsten Bold;
+    font-size: 3rem;
+    position: relative;
 }
 
-.heading-wrapper > div{
-    position: relative;
-    cursor: pointer;
+.overlay h1::after{
+    content: "";
+    background-color: white;
+    position: absolute;
+    left: 40%;
+    right: 40%;
+    top: 100%;
+    height: 2px;
+    transition: .6s;
+}
+
+.heading-wrapper > div:hover .img{
+    transform: scale(1.1);
 }
 
 .heading-wrapper > div:hover .overlay{
-    opacity: 1;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.heading-wrapper > div:hover .overlay h1::after{
+    left: 5%;
+    right: 5%;
+}
+
+.nav {
+    width: 75%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5rem;
+}
+
+.nav a {
+    width: 24%;
+    background-color: #734F9A;
+    color: #8bd450;
+    font-family: Tungsten Bold;
+    font-size: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .8s;
+}
+
+.nav a::after {
+    content: "";
+    position: absolute;
+    background-color: #ED2323;
+    top: 0;
+    bottom: 0;
+    left: -150%;
+    right: -25%;
+    transform: skewX(-30deg) scale(0, 1);
+    z-index: -1;
+    transition: .8s;
+}
+
+.nav a:hover {
+    color: #281D2D;
+}
+
+.nav a:hover::after {
+    transform: skewX(-30deg) scale(1, 1);
+}
+
+.content-wrapper > div{
+    margin-bottom: 5rem;
+}
+
+.slogan {
+    width: 75%;
+    margin: auto;
+}
+
+.slogan h1{
+    font-family: Tungsten Bold;
+    font-size: 4rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.slogan p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    color: #bbb;
+}
+
+.content{
+    width: 90%;
+    height: 410px;
+    margin: auto;
+    display: grid;
+    gap: 5rem;
+}
+
+.flagship{
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.desc h1, .desc p {
+    color: var(--white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.desc h1 {
+    font-size: 2rem;
+    margin-bottom: 1em;
+    font-weight: 900;
+}
+
+.desc p {
+    font-size: 1.1rem;
+}
+
+.ss{
+    grid-template-columns: 1.8fr 1fr;
+}
+
+.ss .flagship{
+    background-image: url(assets/img/content-1.jpg);
+}
+
+.logi{
+    grid-template-columns: 1fr 1.8fr;
+}
+
+.logi .flagship {
+    background-image: url(assets/img/content-2.jpg);
+}
+
+.kb1::after, .kb2::after{
+    content: "Learn\aMore";
+    white-space: pre;
+    font-family: Tungsten Bold;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    transition: .8s;
+}
+
+.kb1::after{
+    background-color: purple;
+    left: 100%;
+    right: -15%;
+}
+
+@keyframes focus-glow-1 {
+    from {
+        box-shadow: none;
+    }
+
+    to {
+        box-shadow: 0 0 5px purple, 0 0 50px purple;
+    }
+}
+
+.content .kb1:hover::after{
+    left: 80%;
+    right: 0;
+}
+
+.content .kb1:hover{
+    animation: focus-glow-1 1s ease-out infinite alternate;
+}
+
+.kb2::after {
+    background-color: var(--red);
+    left: -15%;
+    right: 100%;
+}
+
+@keyframes focus-glow-2 {
+    from {
+        box-shadow: none;
+    }
+
+    to {
+        box-shadow: 0 0 5px var(--red), 0 0 50px var(--red);
+    }
+}
+
+.content .kb2:hover::after {
+    left: 0;
+    right: 80%;
+}
+
+.content .kb2:hover {
+    animation: focus-glow-2 1s ease-out infinite alternate;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background-color: var(--black);
+    color: white;
+    border-top: .5px solid white;
+    box-shadow: 0 -4px 8px 0 rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.socmed{
+    display: flex;
+    flex-direction: row;
+}
+
+.socmed a {
+    background-color: #858585;
+    color: black;
+    width: 26px;
+    height: 26px;
+    margin: 0 10px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+.socmed a:hover {
+    background-color: white;
+    box-shadow: 0 0 8px 0 rgba(255, 255, 255, 1);
+}
+
+footer p {
+    width: min(80%, 500px);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-variant: small-caps;
+    font-weight: 600;
+    text-align: center;
 }
